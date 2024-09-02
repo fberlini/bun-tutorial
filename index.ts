@@ -16,6 +16,11 @@ const server = Bun.serve({
             throw new Error('Could not fetch')
         }
 
+        // Access text file
+        if (url.pathname === '/greet') {
+            return new Response(Bun.file('./greet.txt'))
+        }
+
         return new Response('404!')
     },
     error(error) {
